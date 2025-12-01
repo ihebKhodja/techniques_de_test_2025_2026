@@ -1,5 +1,7 @@
-PYTHON=venv\Scripts\python.exe
-TEST_DIR=tests
+PYTHON = venv/bin/python
+TEST_DIR = tests
+
+.PHONY: all test unit_test perf_test coverage lint doc
 
 all: test
 
@@ -14,10 +16,10 @@ perf_test:
 
 coverage:
 	$(PYTHON) -m coverage run -m pytest $(TEST_DIR)
-	$(PYTHON) -m coverage report -m
+	$(PYTHON) -m coverage report
 
 lint:
-	ruff check triangulator
+	ruff check triangulator.py
 
 doc:
 	pdoc3 triangulator --html --output-dir docs
