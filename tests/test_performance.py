@@ -12,11 +12,10 @@ def test_triangulation_performance_10_points():
     try:
         triangulate(points)
     except NotImplementedError:
-        pass  # Normal à ce stade
+        pass  
     duration = time.perf_counter() - start
     print(f"Triangulation 10 points: {duration:.4f}s")
-    # On ne assert pas le temps maintenant, mais on le mesure
-    assert True  # Le test "passe" même si non implémenté
+    assert True  
 
 
 @pytest.mark.perf
@@ -50,7 +49,6 @@ def test_triangulation_performance_1000_points():
 @pytest.mark.perf
 def test_decode_pointset_performance():
     """Mesure le temps de décodage binaire pour 1000 points."""
-    # Génère un PointSet binaire de 1000 points
     import struct
     n = 1000
     binary = struct.pack('<L', n)
@@ -70,9 +68,7 @@ def test_decode_pointset_performance():
 @pytest.mark.perf
 def test_encode_triangles_performance():
     """Mesure le temps d'encodage binaire pour 500 triangles."""
-    # Simule 500 sommets
     vertices = [(random.uniform(0, 100), random.uniform(0, 100)) for _ in range(500)]
-    # Simule 200 triangles (indices aléatoires)
     triangles = [(random.randint(0, 499), random.randint(0, 499), random.randint(0, 499)) for _ in range(200)]
 
     start = time.perf_counter()
