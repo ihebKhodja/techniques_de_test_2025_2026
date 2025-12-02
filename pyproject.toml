@@ -8,3 +8,28 @@ select = [
     "SIM",
     "I",
 ]
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = ["tests"]
+markers = [
+    "perf: tests de performance (exécutés via 'make perf_test')",
+]
+
+[tool.coverage.run]
+source = ["."]
+include = ["triangulator.py"]
+omit = [
+    "tests/*",
+    "venv/*",
+    ".venv/*",
+    "*/site-packages/*",
+    "setup.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "def __repr__",
+    "if __name__ == .__main__.:",
+]
