@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>triangulator.triangulator API documentation</title>
+<meta name="description" content="Triangulator Service …">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>triangulator.triangulator</code></h1>
+</header>
+<section id="section-intro">
+<p>Triangulator Service.</p>
+<p>Composant responsable de:
+1. Récupérer les pointsets via le PointSetManager
+2. Décoder/encoder les données binaires
+3. Calculer les triangulations
+4. Exposer l'API REST</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="triangulator.triangulator.decode_pointset"><code class="name flex">
+<span>def <span class="ident">decode_pointset</span></span>(<span>binary_data: bytes) ‑> list[tuple[float, float]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decode_pointset(binary_data: bytes) -&gt; list[Point]:
+    &#34;&#34;&#34;Décode un ensemble de points depuis un format binaire.
+
+    Format attendu:
+        uint32 N = nombre de points
+        N * (float64 x, float64 y)
+
+    Args:
+        binary_data: bytes contenant les données encodées
+
+    Returns:
+        list[Point]: Liste de tuples (x, y) où x, y sont des float64
+
+    Raises:
+        ValueError: Si le format binaire est invalide ou corrompu
+
+    &#34;&#34;&#34;
+    if len(binary_data) &lt; HEADER_SIZE:
+        raise ValueError(
+            f&#34;Binaire trop court: au minimum {HEADER_SIZE} bytes attendus &#34;
+            f&#34;pour le header, reçu {len(binary_data)} bytes&#34;
+        )
+
+    offset = 0
+
+    # Lire le nombre de points
+    try:
+        (count,) = struct.unpack_from(&#34;&lt;I&#34;, binary_data, offset)
+    except struct.error as e:
+        raise ValueError(f&#34;Erreur lors de la lecture du nombre de points: {e}&#34;) from e
+
+    offset += HEADER_SIZE
+    expected_length = HEADER_SIZE + count * BYTES_PER_POINT
+    if len(binary_data) != expected_length:
+        raise ValueError(
+            f&#34;Longueur invalide: attendu {expected_length} bytes pour &#34;
+            f&#34;{count} points, reçu {len(binary_data)} bytes&#34;
+        )
+
+    # Décoder tous les points
+    points = []
+    for i in range(count):
+        try:
+            x, y = struct.unpack_from(&#34;&lt;dd&#34;, binary_data, offset)
+        except struct.error as e:
+            raise ValueError(f&#34;Erreur lors de la lecture du point {i}: {e}&#34;) from e
+        offset += BYTES_PER_POINT
+        points.append((x, y))
+
+    return points</code></pre>
+</details>
+<div class="desc"><p>Décode un ensemble de points depuis un format binaire.</p>
+<p>Format attendu:
+uint32 N = nombre de points
+N * (float64 x, float64 y)</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>binary_data</code></strong></dt>
+<dd>bytes contenant les données encodées</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[Point]</code></dt>
+<dd>Liste de tuples (x, y) où x, y sont des float64</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>Si le format binaire est invalide ou corrompu</dd>
+</dl></div>
+</dd>
+<dt id="triangulator.triangulator.decode_triangles"><code class="name flex">
+<span>def <span class="ident">decode_triangles</span></span>(<span>data: bytes) ‑> tuple[list[tuple[float, float]], list[tuple[int, int, int]]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decode_triangles(data: bytes) -&gt; tuple[list[Point], list[Triangle]]:
+    &#34;&#34;&#34;Décode les points et triangles depuis un format binaire complet.
+
+    Format:
+        uint32 N (nombre de points)
+        N * (float64 x, float64 y)
+        uint32 T (nombre de triangles)
+        T * (uint32 a, uint32 b, uint32 c)
+
+    Args:
+        data: bytes contenant les données encodées
+
+    Returns:
+        tuple[list[Point], list[Triangle]]: Points et triangles décodés
+
+    Raises:
+        ValueError: Si le format binaire est invalide ou corrompu
+
+    &#34;&#34;&#34;
+    if len(data) &lt; HEADER_SIZE:
+        raise ValueError(&#34;Binaire trop court: au minimum 4 bytes attendus&#34;)
+
+    offset = 0
+
+    # Décoder les points
+    try:
+        (count,) = struct.unpack_from(&#34;&lt;I&#34;, data, offset)
+    except struct.error as e:
+        raise ValueError(f&#34;Erreur lors de la lecture du nombre de points: {e}&#34;) from e
+
+    offset += HEADER_SIZE
+    points = []
+    for i in range(count):
+        if offset + BYTES_PER_POINT &gt; len(data):
+            raise ValueError(
+                f&#34;Données corrompues: point {i} incomplet, &#34;
+                f&#34;offset={offset}, len={len(data)}&#34;
+            )
+        try:
+            x, y = struct.unpack_from(&#34;&lt;dd&#34;, data, offset)
+        except struct.error as e:
+            raise ValueError(f&#34;Erreur lors de la lecture du point {i}: {e}&#34;) from e
+        offset += BYTES_PER_POINT
+        points.append((x, y))
+
+    # Décoder les triangles
+    if offset + HEADER_SIZE &gt; len(data):
+        raise ValueError(&#34;Données corrompues: nombre de triangles manquant&#34;)
+
+    try:
+        (tcount,) = struct.unpack_from(&#34;&lt;I&#34;, data, offset)
+    except struct.error as e:
+        raise ValueError(
+            f&#34;Erreur lors de la lecture du nombre de triangles: {e}&#34;
+        ) from e
+    offset += HEADER_SIZE
+    triangles = []
+    for i in range(tcount):
+        if offset + BYTES_PER_TRIANGLE &gt; len(data):
+            raise ValueError(
+                f&#34;Données corrompues: triangle {i} incomplet, &#34;
+                f&#34;offset={offset}, len={len(data)}&#34;
+            )
+        try:
+            a, b, c = struct.unpack_from(&#34;&lt;III&#34;, data, offset)
+        except struct.error as e:
+            raise ValueError(f&#34;Erreur lors de la lecture du triangle {i}: {e}&#34;) from e
+        offset += BYTES_PER_TRIANGLE
+        triangles.append((a, b, c))
+
+    if offset != len(data):
+        raise ValueError(
+            f&#34;Données excédentaires: {len(data) - offset} bytes non lus après &#34;
+            f&#34;la fin des données attendues&#34;
+        )
+
+    return points, triangles</code></pre>
+</details>
+<div class="desc"><p>Décode les points et triangles depuis un format binaire complet.</p>
+<h2 id="format">Format</h2>
+<p>uint32 N (nombre de points)
+N * (float64 x, float64 y)
+uint32 T (nombre de triangles)
+T * (uint32 a, uint32 b, uint32 c)</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>data</code></strong></dt>
+<dd>bytes contenant les données encodées</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple[list[Point], list[Triangle]]</code></dt>
+<dd>Points et triangles décodés</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>Si le format binaire est invalide ou corrompu</dd>
+</dl></div>
+</dd>
+<dt id="triangulator.triangulator.encode_pointset"><code class="name flex">
+<span>def <span class="ident">encode_pointset</span></span>(<span>points: list[tuple[float, float]]) ‑> bytes</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def encode_pointset(points: list[Point]) -&gt; bytes:
+    &#34;&#34;&#34;Encode un ensemble de points au format binaire.
+
+    Format:
+        uint32 N = nombre de points
+        N * (float64 x, float64 y)
+
+    Args:
+        points: Liste de tuples (x, y)
+
+    Returns:
+        bytes: Données encodées au format binaire
+
+    Raises:
+        ValueError: Si les points ne sont pas du format correct
+
+    &#34;&#34;&#34;
+    try:
+        out = [struct.pack(&#34;&lt;I&#34;, len(points))]
+        for x, y in points:
+            out.append(struct.pack(&#34;&lt;dd&#34;, float(x), float(y)))
+        return b&#34;&#34;.join(out)
+    except (TypeError, ValueError) as e:
+        raise ValueError(f&#34;Erreur lors de l&#39;encodage des points: {e}&#34;) from e</code></pre>
+</details>
+<div class="desc"><p>Encode un ensemble de points au format binaire.</p>
+<h2 id="format">Format</h2>
+<p>uint32 N = nombre de points
+N * (float64 x, float64 y)</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>points</code></strong></dt>
+<dd>Liste de tuples (x, y)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bytes</code></dt>
+<dd>Données encodées au format binaire</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>Si les points ne sont pas du format correct</dd>
+</dl></div>
+</dd>
+<dt id="triangulator.triangulator.encode_triangles"><code class="name flex">
+<span>def <span class="ident">encode_triangles</span></span>(<span>triangles: list[tuple[int, int, int]], vertices: list[tuple[float, float]]) ‑> bytes</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def encode_triangles(triangles: list[Triangle], vertices: list[Point]) -&gt; bytes:
+    &#34;&#34;&#34;Encode les points et triangles au format binaire complet.
+
+    Format:
+        uint32 N (nombre de points)
+        N * (float64 x, float64 y)
+        uint32 T (nombre de triangles)
+        T * (uint32 i, uint32 j, uint32 k)
+
+    Args:
+        triangles: Liste de tuples (a, b, c) représentant les indices de points
+        vertices: Liste de points (x, y)
+
+    Returns:
+        bytes: Données encodées au format binaire
+
+    Raises:
+        ValueError: Si les données ne sont pas du format correct
+
+    &#34;&#34;&#34;
+    try:
+        out = [struct.pack(&#34;&lt;I&#34;, len(vertices))]
+        for x, y in vertices:
+            out.append(struct.pack(&#34;&lt;dd&#34;, float(x), float(y)))
+        out.append(struct.pack(&#34;&lt;I&#34;, len(triangles)))
+        for a, b, c in triangles:
+            out.append(struct.pack(&#34;&lt;III&#34;, int(a), int(b), int(c)))
+        return b&#34;&#34;.join(out)
+    except (TypeError, ValueError) as e:
+        raise ValueError(f&#34;Erreur lors de l&#39;encodage des triangles: {e}&#34;) from e</code></pre>
+</details>
+<div class="desc"><p>Encode les points et triangles au format binaire complet.</p>
+<h2 id="format">Format</h2>
+<p>uint32 N (nombre de points)
+N * (float64 x, float64 y)
+uint32 T (nombre de triangles)
+T * (uint32 i, uint32 j, uint32 k)</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>triangles</code></strong></dt>
+<dd>Liste de tuples (a, b, c) représentant les indices de points</dd>
+<dt><strong><code>vertices</code></strong></dt>
+<dd>Liste de points (x, y)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bytes</code></dt>
+<dd>Données encodées au format binaire</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>Si les données ne sont pas du format correct</dd>
+</dl></div>
+</dd>
+<dt id="triangulator.triangulator.get_triangulation"><code class="name flex">
+<span>def <span class="ident">get_triangulation</span></span>(<span>pointSetId: str) ‑> flask.wrappers.Response</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/triangulation/&lt;pointSetId&gt;&#34;, methods=[&#34;GET&#34;])
+def get_triangulation(pointSetId: str) -&gt; Response:
+    &#34;&#34;&#34;Récupère la triangulation d&#39;un PointSet.
+
+    Endpoint: GET /triangulation/{pointSetId}
+
+    Procédure:
+    1. Appelle le PointSetManager pour obtenir le PointSet en binaire
+    2. Décode les points
+    3. Calcule la triangulation
+    4. Encode et renvoie le résultat
+
+    Args:
+        pointSetId: UUID du PointSet (passé en route param)
+
+    Returns:
+        Response: Fichier binaire encodé avec status HTTP 200
+                  ou erreur JSON avec status HTTP approprié
+
+    Status codes:
+        200: Succès, contient les triangles encodés
+        400: Erreur de décodage/encodage des données
+        404: PointSet introuvable (PointSetManager)
+        405: Méthode HTTP non autorisée (Flask automatique)
+        500: Erreur interne lors de la triangulation
+        502: PointSetManager injoignable ou en erreur
+
+    &#34;&#34;&#34;
+    try:
+        url = f&#34;{POINTSET_MANAGER_URL}/pointsets/{pointSetId}/binary&#34;
+        response = requests.get(url, timeout=REQUEST_TIMEOUT)
+    except requests.Timeout:
+        return jsonify({
+            &#34;error&#34;: &#34;PointSetManager timeout&#34;,
+            &#34;details&#34;: (
+                f&#34;Requête vers {POINTSET_MANAGER_URL} expirée après &#34;
+                f&#34;{REQUEST_TIMEOUT}s&#34;
+            )
+        }), 502
+    except requests.ConnectionError as e:
+        return jsonify({
+            &#34;error&#34;: &#34;PointSetManager unreachable&#34;,
+            &#34;details&#34;: f&#34;Impossible de se connecter à {POINTSET_MANAGER_URL}: {str(e)}&#34;
+        }), 502
+    except requests.RequestException as e:
+        return jsonify({
+            &#34;error&#34;: &#34;PointSetManager request failed&#34;,
+            &#34;details&#34;: str(e)
+        }), 502
+
+    if response.status_code == 404:
+        return jsonify({&#34;error&#34;: &#34;PointSet not found&#34;, &#34;pointSetId&#34;: pointSetId}), 404
+
+    if response.status_code != 200:
+        return jsonify({
+            &#34;error&#34;: &#34;PointSetManager error&#34;,
+            &#34;status_code&#34;: response.status_code
+        }), 502
+
+    try:
+        points = decode_pointset(response.content)
+    except ValueError as e:
+        return jsonify({
+            &#34;error&#34;: &#34;Invalid PointSet binary format&#34;,
+            &#34;details&#34;: str(e)
+        }), 400
+    except Exception as e:
+        return jsonify({&#34;error&#34;: &#34;PointSet decode failed&#34;, &#34;details&#34;: str(e)}), 400
+
+    try:
+        triangles = triangulate(points)
+    except Exception as e:
+        return jsonify({&#34;error&#34;: &#34;Triangulation failed&#34;, &#34;details&#34;: str(e)}), 500
+
+    try:
+        result = encode_triangles(triangles, points)
+    except ValueError as e:
+        return jsonify({&#34;error&#34;: &#34;Triangle encoding failed&#34;, &#34;details&#34;: str(e)}), 400
+    except Exception as e:
+        return jsonify({&#34;error&#34;: &#34;Encoding failed&#34;, &#34;details&#34;: str(e)}), 500
+
+    return Response(result, content_type=&#34;application/octet-stream&#34;)</code></pre>
+</details>
+<div class="desc"><p>Récupère la triangulation d'un PointSet.</p>
+<p>Endpoint: GET /triangulation/{pointSetId}</p>
+<p>Procédure:
+1. Appelle le PointSetManager pour obtenir le PointSet en binaire
+2. Décode les points
+3. Calcule la triangulation
+4. Encode et renvoie le résultat</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>pointSetId</code></strong></dt>
+<dd>UUID du PointSet (passé en route param)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Response</code></dt>
+<dd>Fichier binaire encodé avec status HTTP 200
+ou erreur JSON avec status HTTP approprié</dd>
+</dl>
+<p>Status codes:
+200: Succès, contient les triangles encodés
+400: Erreur de décodage/encodage des données
+404: PointSet introuvable (PointSetManager)
+405: Méthode HTTP non autorisée (Flask automatique)
+500: Erreur interne lors de la triangulation
+502: PointSetManager injoignable ou en erreur</p></div>
+</dd>
+<dt id="triangulator.triangulator.health"><code class="name flex">
+<span>def <span class="ident">health</span></span>(<span>) ‑> flask.wrappers.Response</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@app.route(&#34;/health&#34;, methods=[&#34;GET&#34;])
+def health() -&gt; Response:
+    &#34;&#34;&#34;Healthcheck endpoint.&#34;&#34;&#34;
+    return jsonify({&#34;status&#34;: &#34;ok&#34;}), 200</code></pre>
+</details>
+<div class="desc"><p>Healthcheck endpoint.</p></div>
+</dd>
+<dt id="triangulator.triangulator.triangulate"><code class="name flex">
+<span>def <span class="ident">triangulate</span></span>(<span>points: list[tuple[float, float]]) ‑> list[tuple[int, int, int]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def triangulate(points: list[Point]) -&gt; list[Triangle]:
+    &#34;&#34;&#34;Calculate fan triangulation from a list of points.
+
+    Algorithme:
+    - Si &lt; 3 points: retourne liste vide
+    - Si tous les points sont colinéaires: retourne liste vide
+    - Sinon: crée une triangulation en éventail à partir du point 0
+
+    La triangulation en éventail connecte le premier point à toutes les
+    arêtes de la chaîne des autres points.
+
+    Exemple avec 4 points [0, 1, 2, 3]:
+        Triangles: (0,1,2), (0,2,3)
+
+    Args:
+        points: Liste de points à trianguler
+
+    Returns:
+        list[Triangle]: Liste de triangles (a, b, c) où a, b, c sont des indices
+
+    Raises:
+        ValueError: En cas d&#39;erreur interne de calcul
+
+    &#34;&#34;&#34;
+    n = len(points)
+    if n &lt; 3:
+        return []
+
+    def are_collinear(p1: Point, p2: Point, p3: Point) -&gt; bool:
+        &#34;&#34;&#34;Vérifie si trois points sont colinéaires via le produit vectoriel.&#34;&#34;&#34;
+        cross_product = (
+            (p2[0] - p1[0]) * (p3[1] - p1[1]) -
+            (p2[1] - p1[1]) * (p3[0] - p1[0])
+        )
+        return abs(cross_product) &lt; 1e-12
+
+    all_collinear = True
+    for i in range(2, n):
+        if not are_collinear(points[0], points[1], points[i]):
+            all_collinear = False
+            break
+
+    if all_collinear:
+        return []
+
+    return [(0, i, i + 1) for i in range(1, n - 1)]</code></pre>
+</details>
+<div class="desc"><p>Calculate fan triangulation from a list of points.</p>
+<p>Algorithme:
+- Si &lt; 3 points: retourne liste vide
+- Si tous les points sont colinéaires: retourne liste vide
+- Sinon: crée une triangulation en éventail à partir du point 0</p>
+<p>La triangulation en éventail connecte le premier point à toutes les
+arêtes de la chaîne des autres points.</p>
+<p>Exemple avec 4 points [0, 1, 2, 3]:
+Triangles: (0,1,2), (0,2,3)</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>points</code></strong></dt>
+<dd>Liste de points à trianguler</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list[Triangle]</code></dt>
+<dd>Liste de triangles (a, b, c) où a, b, c sont des indices</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>En cas d'erreur interne de calcul</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="triangulator" href="index.html">triangulator</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="triangulator.triangulator.decode_pointset" href="#triangulator.triangulator.decode_pointset">decode_pointset</a></code></li>
+<li><code><a title="triangulator.triangulator.decode_triangles" href="#triangulator.triangulator.decode_triangles">decode_triangles</a></code></li>
+<li><code><a title="triangulator.triangulator.encode_pointset" href="#triangulator.triangulator.encode_pointset">encode_pointset</a></code></li>
+<li><code><a title="triangulator.triangulator.encode_triangles" href="#triangulator.triangulator.encode_triangles">encode_triangles</a></code></li>
+<li><code><a title="triangulator.triangulator.get_triangulation" href="#triangulator.triangulator.get_triangulation">get_triangulation</a></code></li>
+<li><code><a title="triangulator.triangulator.health" href="#triangulator.triangulator.health">health</a></code></li>
+<li><code><a title="triangulator.triangulator.triangulate" href="#triangulator.triangulator.triangulate">triangulate</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,1 @@
+"""Triangulator package for fan triangulation of point sets."""
