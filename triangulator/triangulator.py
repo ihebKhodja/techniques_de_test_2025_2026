@@ -16,14 +16,12 @@ from flask import Flask, Response, jsonify
 Point = tuple[float, float]
 Triangle = tuple[int, int, int]
 
-# Constants for binary format
-BYTES_PER_POINT = 16  # 2 * float64 (8 bytes each)
-BYTES_PER_TRIANGLE = 12  # 3 * uint32 (4 bytes each)
-HEADER_SIZE = 4  # uint32
+BYTES_PER_POINT = 16  
+BYTES_PER_TRIANGLE = 12  
+HEADER_SIZE = 4  
 
 app = Flask(__name__)
 
-# Configuration
 POINTSET_MANAGER_URL = "http://pointsetmanager.local"
 REQUEST_TIMEOUT = 5
 
@@ -58,7 +56,6 @@ def decode_pointset(binary_data: bytes) -> list[Point]:
 
     offset = 0
 
-    # Lire le nombre de points
     try:
         (count,) = struct.unpack_from("<I", binary_data, offset)
     except struct.error as e:
@@ -72,7 +69,6 @@ def decode_pointset(binary_data: bytes) -> list[Point]:
             f"{count} points, reçu {len(binary_data)} bytes"
         )
 
-    # Décoder tous les points
     points = []
     for i in range(count):
         try:
@@ -140,7 +136,6 @@ def decode_triangles(data: bytes) -> tuple[list[Point], list[Triangle]]:
 
     offset = 0
 
-    # Décoder les points
     try:
         (count,) = struct.unpack_from("<I", data, offset)
     except struct.error as e:

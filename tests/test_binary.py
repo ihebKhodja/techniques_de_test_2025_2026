@@ -109,7 +109,7 @@ def test_get_triangulation_corrupted_point_count_returns_400(mock_get, client):
 
 
 # ============================================================================
-# 4. Contrat d'intégration (optionnel mais utile)
+# 4. Contrat d'intégration 
 # ============================================================================
 
 @patch('triangulator.triangulator.requests.get')
