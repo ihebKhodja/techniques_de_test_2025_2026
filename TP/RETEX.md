@@ -2,7 +2,7 @@
 
 ## 1. Vue d'ensemble
 
-Ce projet a suivi une approche **Test-First Development (TFD)**. Le développement s'est déroulé en trois phases:
+Le développement s'est déroulé en trois phases:
 
 1. **Rédaction du PLAN.md** (préparation)
 2. **Mise en place des tests** (sans implémentation)
@@ -17,8 +17,6 @@ Ce projet a suivi une approche **Test-First Development (TFD)**. Le développeme
 - Définition claire des cas de test avant d'écrire une seule ligne de code
 - Identification des cas limites (empty, 1, many) et des cas d'erreur
 - Structure organisée par domaine (binaire, triangulation, API HTTP)
-
-**Impact:** Aucun test "surprise" n'a dû être ajouté tardivement. Le plan initial couvrait tous les cas importants.
 
 ### 2.2 Couverture des formats binaires
 
@@ -285,5 +283,3 @@ La prochaine fois:
 - Spécifier les types de retour dans le plan
 - Documenter la stratégie de mocking
 - Ajouter au moins un test d'intégration complète
-
-

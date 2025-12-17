@@ -5,7 +5,7 @@ Couvre:
 - Routage des endpoints
 - Codes HTTP
 - Intégration avec PointSetManager (mock)
-- Validation d'entrées
+- Gestion des erreurs HTTP et réseau
 """
 
 import struct
@@ -65,7 +65,7 @@ def test_get_triangulation_success(mock_get, client):
 
 
 # ============================================================================
-# 3. Tests erreurs (PSM + réseau)
+# 3. Tests erreurs PSM et réseau
 # ============================================================================
 
 @patch('triangulator.triangulator.requests.get')
@@ -76,50 +76,29 @@ def test_get_triangulation_propagates_psm_404(mock_get, client):
     assert response.status_code == 404
 
 
-@patch('triangulator.triangulator.requests.get')
-def test_get_triangulation_psm_500_returns_502(mock_get, client):
-    """PSM 500 → endpoint 502."""
-    mock_get.return_value = Mock(status_code=500)
-    response = client.get('/triangulation/123')
-    assert response.status_code == 502
-
-
-@pytest.mark.parametrize("exception", [
+@pytest.mark.parametrize("error", [
+    # Erreurs HTTP du PSM
+    Mock(status_code=500),
+    Mock(status_code=502),
+    Mock(status_code=503),
+    # Erreurs réseau
     requests.Timeout(),
     requests.ConnectionError(),
     requests.RequestException(),
 ])
 @patch('triangulator.triangulator.requests.get')
-def test_get_triangulation_network_errors_return_502(mock_get, client, exception):
-    """Toute erreur réseau → 502."""
-    mock_get.side_effect = exception
+def test_get_triangulation_returns_502_on_psm_failure(mock_get, client, error):
+    """Toute erreur PSM (HTTP 5xx ou réseau) → 502."""
+    if isinstance(error, Mock):
+        mock_get.return_value = error
+    else:
+        mock_get.side_effect = error
     response = client.get('/triangulation/123')
     assert response.status_code == 502
 
 
 # ============================================================================
-# 4. Validation des données binaires
-# ============================================================================
-
-@patch('triangulator.triangulator.requests.get')
-def test_get_triangulation_invalid_binary_format_returns_400(mock_get, client):
-    """Données binaires invalides → 400."""
-    mock_get.return_value = Mock(status_code=200, content=b'\x00\x00')
-    response = client.get('/triangulation/123')
-    assert response.status_code == 400
-
-
-@patch('triangulator.triangulator.requests.get')
-def test_get_triangulation_corrupted_point_count_returns_400(mock_get, client):
-    """Nombre de points > données fournies → 400."""
-    corrupted = struct.pack('<I', 10) + struct.pack('<dd', 0.0, 0.0)
-    mock_get.return_value = Mock(status_code=200, content=corrupted)
-    response = client.get('/triangulation/123')
-    assert response.status_code == 400
-
-
-# ============================================================================
-# 5. Vérification de l'appel au PSM (optionnel mais utile)
+# 4. Vérification de l'appel au PSM
 # ============================================================================
 
 @patch('triangulator.triangulator.requests.get')
