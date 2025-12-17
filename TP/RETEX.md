@@ -162,12 +162,12 @@ get_triangulation:    100% (6 endpoints testés)
 
 ### Nombre de tests
 
-- `test_api.py`: 9 tests (endpoint routing, HTTP codes, errors)
-- `test_binary.py`: 14 tests (encode/decode, roundtrips, corruption)
-- `test_triangulator.py`: 6 tests (limites, colinéarité, algorithme)
-- `test_performance.py`: 3 tests (1000 points, < 1s)
+- `test_api.py`: 18 tests (routage, codes HTTP, erreurs réseau, décodage, encodage, health)
+- `test_binary.py`: 33 tests (decode_pointset, encode_pointset, decode_triangles, encode_triangles, roundtrips, API)
+- `test_triangulator.py`: 5 tests (limites, colinéarité, algorithme, coordonnées spéciales)
+- `test_performance.py`: 6 tests (1000 points, < 1s per operation, E2E)
 
-**Total: 32 tests**
+**Total: 62 tests** ✅ (avec 91% de coverage)
 
 ### Tous les tests passent ✓
 
@@ -180,7 +180,7 @@ get_triangulation:    100% (6 endpoints testés)
 Ajouter au plan:
 
 ```markdown
-### Types de retour spécifiés
+### Types de retour spécifié
 
 - decode_triangles() → Tuple[List[Point], List[Triangle]]
 - triangulate() → List[Tuple[int, int, int]]
@@ -205,44 +205,6 @@ Plan:
 - Mock structure: `Mock().status_code` et `Mock().content`
 ```
 
-### 6.3 Test d'intégration
-
-Ajouter:
-
-```python
-def test_triangulation_roundtrip_e2e():
-    """
-    Test complet: données → API → binaire → décodage → validation
-    """
-    points = [(0, 0), (1, 0), (0, 1)]
-    triangles = triangulate(points)
-
-    # Encode complet
-    binary = encode_triangles(triangles, points)
-
-    # Décode
-    decoded_points, decoded_triangles = decode_triangles(binary)
-
-    # Vérifie
-    assert decoded_triangles == triangles
-```
-
-### 6.4 Tests de précision float
-
-```python
-def test_decode_pointset_precision():
-    """Vérifier que float64 préserve la précision"""
-    points = [(0.123456789012345, -0.987654321098765)]
-    binary = encode_pointset(points)
-    decoded = decode_pointset(binary)
-
-    # Utiliser math.isclose pour float comparison
-    assert math.isclose(decoded[0][0], points[0][0])
-    assert math.isclose(decoded[0][1], points[0][1])
-```
-
----
-
 ## 7. Évaluation de l'approche Test-First
 
 ### ✅ Avantages confirmés
@@ -257,15 +219,6 @@ def test_decode_pointset_precision():
 1. **Over-specify:** Ne pas trop détailler les implémentations dans les tests
 2. **Oublier les cas d'erreur:** Tester les exceptions, pas juste le chemin heureux
 3. **Mocking trop agressif:** Vérifier que le vrai code marche aussi
-
-### 💡 Recommandations pour TFD
-
-1. Plan → Tests → Code (respecter l'ordre)
-2. Tester les limites ET les erreurs
-3. Garder les tests simples et focalisés
-4. Ajouter un test d'intégration au moins
-
----
 
 ## 8. Conclusion
 
@@ -282,4 +235,4 @@ La prochaine fois:
 
 - Spécifier les types de retour dans le plan
 - Documenter la stratégie de mocking
-- Ajouter au moins un test d'intégration complète
+-

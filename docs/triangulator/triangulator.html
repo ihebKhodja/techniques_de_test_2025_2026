@@ -83,7 +83,6 @@ el.replaceWith(d);
 
     offset = 0
 
-    # Lire le nombre de points
     try:
         (count,) = struct.unpack_from(&#34;&lt;I&#34;, binary_data, offset)
     except struct.error as e:
@@ -97,7 +96,6 @@ el.replaceWith(d);
             f&#34;{count} points, reçu {len(binary_data)} bytes&#34;
         )
 
-    # Décoder tous les points
     points = []
     for i in range(count):
         try:
@@ -161,7 +159,6 @@ N * (float64 x, float64 y)</p>
 
     offset = 0
 
-    # Décoder les points
     try:
         (count,) = struct.unpack_from(&#34;&lt;I&#34;, data, offset)
     except struct.error as e:
